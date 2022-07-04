@@ -1,21 +1,25 @@
 ﻿namespace CadUtils.Commands;
 
+using System;
+
+using CadUtils.Models;
+using CadUtils.Utils;
 using CadUtils.VM;
 
 /// <summary>
 /// Команда добавления кад плагина.
 /// </summary>
-public class AddPluginCommand : BaseCommand
+public class AddPluginCommand : TypedBaseCommand<CadVersionVM>
 {
-    public override void Execute(object parameter)
+    /// <inheritdoc cref="AddPluginCommand" />
+    protected override void Execute(CadVersionVM cadVersionVM)
     {
-        var vm = (SettingsVM)parameter;
-        var selectedCad = vm.SelectedCadVersion;
-        if (selectedCad == null)
-            return;
+        var vm = cadVersionVM.AddedPluginVM;
+        if (string.IsNullOrEmpty(vm.Name) || string.IsNullOrEmpty(vm.PathToDll) || vm.Name.Equals(vm.PathToDll))
+            throw new ArgumentException("Переданы некорректные значения");
 
-        var name = vm.AddedPlugin.Name;
-        var pathToDll = vm.AddedPlugin.PathToDll;
-        selectedCad.AddCadPlugin(name, pathToDll);
+        var newCadPlugin = new CadPlugin(vm.Name, vm.PathToDll, vm.PathToIniFile);
+        newCadPlugin.AddCadPlugin();
+        cadVersionVM.CadPluginVMs.Add(new CadPluginVM(newCadPlugin, cadVersionVM));
     }
 }

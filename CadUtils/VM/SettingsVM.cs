@@ -1,10 +1,7 @@
 ﻿namespace CadUtils.VM;
 
-using System.Collections.Generic;
-using System.Windows.Input;
-
-using CadUtils.Commands;
-using CadUtils.Models;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 /// <summary>
 /// Vm окна настроек кадов.
@@ -16,28 +13,18 @@ public class SettingsVM
     /// </summary>
     public SettingsVM()
     {
-        CadVersions = NcadDictionary.Instance.InstallNcadVersions;
-        AddPluginCommand = new AddPluginCommand();
-        AddedPlugin = new AddedPluginVM();
+        CadVersionsVMs = new ObservableCollection<CadVersionVM>();
+        var cadVersions = NcadDictionary.Instance.InstallNcadVersions.ToList();
+        cadVersions.ForEach(cadSystem => CadVersionsVMs.Add(new CadVersionVM(cadSystem)));
     }
-
-    public ICommand AddPluginCommand { get; set; }
-
-    public AddedPluginVM AddedPlugin { get; set; }
 
     /// <summary>
     /// Список установленных версий кадов.
     /// </summary>
-    public IEnumerable<CadSystem> CadVersions { get; set; }
+    public ObservableCollection<CadVersionVM> CadVersionsVMs { get; set; }
 
     /// <summary>
     /// Выбранный нанокад в списке.
     /// </summary>
-    public CadSystem? SelectedCadVersion { get; set; }
-}
-
-public class AddedPluginVM
-{
-    public string Name { get; set; }
-    public string PathToDll { get; set; }
+    public CadVersionVM? SelectedCadVersionVM { get; set; }
 }

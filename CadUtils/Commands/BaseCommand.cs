@@ -11,18 +11,12 @@ public abstract class BaseCommand : ICommand
     /// <summary>
     /// Доступна ли команда.
     /// </summary>
-    /// <param name="parameter">DataContext для команды.</param>
-    /// <returns>True - доступна.</returns>
+    /// <param name="parameter"> DataContext для команды. </param>
+    /// <returns> True - доступна. </returns>
     public virtual bool CanExecute(object parameter)
     {
         return true;
     }
-
-    /// <summary>
-    /// Выполнение команды.
-    /// </summary>
-    /// <param name="parameter">DataContext для команды.</param>
-    public abstract void Execute(object parameter);
 
     /// <summary>
     /// Событие выполнения.
@@ -32,4 +26,10 @@ public abstract class BaseCommand : ICommand
         add => CommandManager.RequerySuggested += value;
         remove => CommandManager.RequerySuggested -= value;
     }
+
+    /// <summary>
+    /// Выполнение команды.
+    /// </summary>
+    /// <param name="parameter"> DataContext для команды. </param>
+    public abstract void Execute(object parameter);
 }

@@ -1,9 +1,5 @@
 ﻿namespace CadUtils.Models;
 
-using System.Windows.Input;
-
-using CadUtils.Commands;
-
 /// <summary>
 /// Класс кад плагина.
 /// </summary>
@@ -27,20 +23,7 @@ public class CadPlugin
 
         PathToIniFile = pathToIniFile;
         IsEnabled = !pathToDll.Contains("#");
-
-        SwitchingPluginCommand = new SwitchingPluginCommand();
-        DeletePluginCommand = new DeletePluginCommand();
     }
-
-    /// <summary>
-    /// Команда переключения плагина. (вкл/выкл)
-    /// </summary>
-    public ICommand SwitchingPluginCommand { get; set; }
-
-    /// <summary>
-    /// Команда удаления плагина.
-    /// </summary>
-    public ICommand DeletePluginCommand { get; set; }
 
     /// <summary>
     /// True - если плагин включён.

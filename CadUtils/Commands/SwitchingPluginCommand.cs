@@ -1,20 +1,22 @@
 ﻿namespace CadUtils.Commands;
-using CadUtils.Models;
+
 using CadUtils.Utils;
+using CadUtils.VM;
 
 /// <summary>
-/// Команда включения/отключения плагина.
+/// Команда включения/отключения кад плагина.
 /// </summary>
 public class SwitchingPluginCommand : BaseCommand
 {
+    /// <inheritdoc cref="SwitchingPluginCommand" />
     public override void Execute(object parameter)
     {
-        var plugin = (CadPlugin)parameter;
+        var plugin = (CadPluginVM)parameter;
 
         //тут инверсия, т.к. после нажатия кнопки срабатывает set и приходит противоположное значение
-        if (!plugin.IsEnabled)
-            plugin.DisableCadPlugin();
+        if (!plugin.CadPlugin.IsEnabled)
+            plugin.CadPlugin.DisableCadPlugin();
         else
-            plugin.EnableCadPlugin();
+            plugin.CadPlugin.EnableCadPlugin();
     }
 }
