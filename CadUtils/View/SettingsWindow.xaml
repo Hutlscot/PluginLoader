@@ -24,12 +24,12 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <ListBox ItemsSource="{Binding CadVersions}"
-                         SelectedItem="{Binding SelectedCadVersion}">
+                <ListBox ItemsSource="{Binding CadVersionsVMs}"
+                         SelectedItem="{Binding SelectedCadVersionVM}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock VerticalAlignment="Center" Width="200" Text="{Binding Name}"/>
+                                <TextBlock VerticalAlignment="Center" Width="200" Text="{Binding CadSystem.Name}"/>
                                 <Button Width="30" Height="30"
                                         Command="{Binding CadRunCommand}" Foreground="#76ff03"
                                         CommandParameter="{Binding}"
@@ -53,13 +53,13 @@
                 <StackPanel Margin="16">
 
                     <TextBlock HorizontalAlignment="Center" Style="{StaticResource MaterialDesignSubtitle1TextBlock}" Text="Добавить новый плагин" />
-                    <TextBox Margin="8" Text="{Binding AddedPlugin.Name}" materialDesign:HintAssist.Hint="Имя плагина" Cursor="Arrow"/>
-                    <TextBox Margin="8" Text="{Binding AddedPlugin.PathToDll}" materialDesign:HintAssist.Hint="Путь до .dll" Cursor="Arrow" />
+                    <TextBox Margin="8" Text="{Binding SelectedCadVersionVM.AddedPluginVM.Name}" materialDesign:HintAssist.Hint="Имя плагина" Cursor="Arrow"/>
+                    <TextBox Margin="8" Text="{Binding SelectedCadVersionVM.AddedPluginVM.PathToDll}" materialDesign:HintAssist.Hint="Путь до .dll" Cursor="Arrow" />
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button  Style="{StaticResource MaterialDesignRaisedAccentButton}" IsDefault="True" Margin="0 8 8 0" Content="ДОБАВИТЬ" 
-                                 Command="{Binding AddPluginCommand}"
-                                 CommandParameter="{Binding}">
+                                 Command="{Binding SelectedCadVersionVM.AddPluginCommand}"
+                                 CommandParameter="{Binding SelectedCadVersionVM}" Cursor="Hand">
                         </Button>
                         <Button Style="{StaticResource MaterialDesignOutlinedButton}" IsCancel="True" Margin="0 8 8 0" Content="ЗАКРЫТЬ" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Cursor="Hand">
                             <Button.CommandParameter>
@@ -79,19 +79,19 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <ListBox ItemsSource="{Binding SelectedCadVersion.CadPlugins}">
+                    <ListBox ItemsSource="{Binding SelectedCadVersionVM.CadPluginVMs}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <ToggleButton Margin="0 0 5 0" Command="{Binding SwitchingPluginCommand}" CommandParameter="{Binding}"
-                                                  IsChecked="{Binding IsEnabled}" Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"/>
+                                                  IsChecked="{Binding CadPlugin.IsEnabled}" Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"/>
                                     <Button Margin="5 0 5 0" Style="{StaticResource MaterialDesignIconForegroundButton}" Width="30" Height="30" 
                                             Command="{Binding DeletePluginCommand}"
                                             CommandParameter="{Binding}"
                                             Content="{materialDesign:PackIcon Kind=Close, Size=22}"
                                             Foreground="Red">
                                     </Button>
-                                    <Label Content="{Binding DisplayName}" />
+                                    <Label Content="{Binding CadPlugin.DisplayName}" />
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

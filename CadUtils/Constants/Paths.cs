@@ -30,18 +30,6 @@ public class Paths
     public static Paths Instance => _instance ??= new Paths();
 
     /// <summary>
-    /// Получить Assembly Location.
-    /// </summary>
-    /// <returns> Путь Assembly Location. </returns>
-    private static string? GetAssemblyDirectory()
-    {
-        var codeBase = Assembly.GetExecutingAssembly().Location;
-        var uri = new UriBuilder(codeBase);
-        var path = Uri.UnescapeDataString(uri.Path);
-        return Path.GetDirectoryName(path);
-    }
-
-    /// <summary>
     /// Получить путь до файла с плагинами нанокада.
     /// </summary>
     /// <param name="name"> Имя нанокада. </param>
@@ -56,6 +44,18 @@ public class Paths
             File.Create(iniFileName);
 
         return iniFileName;
+    }
+
+    /// <summary>
+    /// Получить Assembly Location.
+    /// </summary>
+    /// <returns> Путь Assembly Location. </returns>
+    private static string? GetAssemblyDirectory()
+    {
+        var codeBase = Assembly.GetExecutingAssembly().Location;
+        var uri = new UriBuilder(codeBase);
+        var path = Uri.UnescapeDataString(uri.Path);
+        return Path.GetDirectoryName(path);
     }
 
     /// <summary>

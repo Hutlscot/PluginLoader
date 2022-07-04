@@ -3,18 +3,18 @@
 using System.Diagnostics;
 using System.IO;
 
-using CadUtils.Models;
+using CadUtils.VM;
 
 /// <summary>
 /// Команда запуска када.
 /// </summary>
 public class CadRunCommand : BaseCommand
 {
-    ///<inheritdoc cref="CadRunCommand"/>
+    /// <inheritdoc cref="CadRunCommand" />
     public override void Execute(object parameter)
     {
-        var cadVersionVM = (CadSystem)parameter;
-        if (File.Exists(cadVersionVM.ExePath))
-            Process.Start(cadVersionVM.ExePath);
+        var cadVersionVM = (CadVersionVM)parameter;
+        if (File.Exists(cadVersionVM.CadSystem.ExePath))
+            Process.Start(cadVersionVM.CadSystem.ExePath);
     }
 }
