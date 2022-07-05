@@ -1,4 +1,4 @@
-﻿namespace CadUtils.Utils;
+﻿namespace CadUtils.Extensions;
 
 using System.IO;
 using System.Linq;

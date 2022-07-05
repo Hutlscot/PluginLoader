@@ -3,6 +3,8 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 
+using CadUtils.Workers;
+
 /// <summary>
 /// Vm окна настроек кадов.
 /// </summary>
@@ -13,8 +15,10 @@ public class SettingsVM
     /// </summary>
     public SettingsVM()
     {
-        CadVersionsVMs = new ObservableCollection<CadVersionVM>();
         var cadVersions = NcadDictionary.Instance.InstallNcadVersions.ToList();
+        CadIntegrationWorker.Integration(cadVersions);
+
+        CadVersionsVMs = new ObservableCollection<CadVersionVM>();
         cadVersions.ForEach(cadSystem => CadVersionsVMs.Add(new CadVersionVM(cadSystem)));
     }
 

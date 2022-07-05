@@ -2,8 +2,6 @@
 
 using System.Collections.Generic;
 using System.IO;
-
-using CadUtils.Constants;
 using CadUtils.Utils;
 
 /// <summary>
@@ -19,13 +17,13 @@ public class CadSystem
     public CadSystem(string registerKey, string name)
     {
         Name = name;
-        ExePath = NcadUtils.GetNcadLocationValue(registerKey) == null
-            ? string.Empty
-            : $@"{NcadUtils.GetNcadLocationValue(registerKey)}nCad.exe";
+        PathToIniFile = PathsUtils.GetPathToIniFile(name);
+        CadPlugins = GetCadPlugins(PathToIniFile);
 
-        PathToIniFile = Paths.GetPathToIniFile(name);
-        SetCadPlugins(PathToIniFile);
+        _installPath = NcadUtils.GetNcadLocationValue(registerKey) ?? string.Empty;
     }
+
+    private readonly string? _installPath;
 
     /// <summary>
     /// Список кад плагинов.
@@ -35,12 +33,17 @@ public class CadSystem
     /// <summary>
     /// Путь до exe.
     /// </summary>
-    public string ExePath { get; set; }
+    public string ExePath => $@"{_installPath}nCad.exe";
+
+    /// <summary>
+    /// Путь до nCad.ini.
+    /// </summary>
+    public string NCadIniPath => $@"{_installPath}nCad.ini";
 
     /// <summary>
     /// True - если кад установлен.
     /// </summary>
-    public bool IsInstall => !string.IsNullOrEmpty(ExePath);
+    public bool IsInstall => !string.IsNullOrEmpty(_installPath);
 
     /// <summary>
     /// Наименование системы.
@@ -48,7 +51,7 @@ public class CadSystem
     public string Name { get; }
 
     /// <summary>
-    /// Путь до ini файла.
+    /// Путь до ini файла c плагинами.
     /// </summary>
     public string PathToIniFile { get; }
 
@@ -57,9 +60,9 @@ public class CadSystem
     /// </summary>
     /// <param name="pathToIniFile"> Пусть до ini файла с плагинами. </param>
     /// <returns> Список всех плагинов из ini файла. </returns>
-    private void SetCadPlugins(string pathToIniFile)
+    private static List<CadPlugin> GetCadPlugins(string pathToIniFile)
     {
-        CadPlugins = new List<CadPlugin>();
+        var cadPlugins = new List<CadPlugin>();
         using (var sr = new StreamReader(pathToIniFile))
         {
             while (true)
@@ -70,8 +73,9 @@ public class CadSystem
                 if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(pathToDll))
                     break;
 
-                CadPlugins.Add(new CadPlugin(name, pathToDll, pathToIniFile));
+                cadPlugins.Add(new CadPlugin(name, pathToDll, pathToIniFile));
             }
         }
+        return cadPlugins;
     }
 }

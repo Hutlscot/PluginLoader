@@ -2,7 +2,7 @@
 
 using System.Windows;
 
-using CadUtils.Utils;
+using CadUtils.Extensions;
 using CadUtils.VM;
 
 /// <summary>

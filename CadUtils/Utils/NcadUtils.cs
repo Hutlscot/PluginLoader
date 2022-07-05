@@ -4,6 +4,9 @@ using System;
 
 using Microsoft.Win32;
 
+/// <summary>
+/// Помощник работы с нанокадом.
+/// </summary>
 public static class NcadUtils
 {
     /// <summary>
