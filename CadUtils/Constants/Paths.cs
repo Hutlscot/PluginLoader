@@ -11,6 +11,7 @@ public class Paths
 {
     private static Paths? _instance;
 
+    /// <inheritdoc cref="Paths"/>>
     private Paths()
     {
         AssemblyDirectory = GetAssemblyDirectory();
@@ -22,12 +23,15 @@ public class Paths
     /// </summary>
     private string? AssemblyDirectory { get; }
 
-    public string IniFilesDirectory { get; set; }
+    /// <summary>
+    /// Путь до папки с ini файлами.
+    /// </summary>
+    private string IniFilesDirectory { get; set; }
 
     /// <summary>
     /// Словарь-синглтон всех систем NanoCAD.
     /// </summary>
-    public static Paths Instance => _instance ??= new Paths();
+    private static Paths Instance => _instance ??= new Paths();
 
     /// <summary>
     /// Получить путь до файла с плагинами нанокада.
@@ -40,9 +44,11 @@ public class Paths
             Directory.CreateDirectory(Instance.IniFilesDirectory);
 
         var iniFileName = GetNameIniFile(name);
-        if (!File.Exists(iniFileName))
-            File.Create(iniFileName);
+        if (File.Exists(iniFileName))
+            return iniFileName;
 
+        //через using, чтобы файл сразу был доступен для работы
+        using var fs = File.Create(iniFileName);
         return iniFileName;
     }
 
