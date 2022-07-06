@@ -10,7 +10,7 @@ public static class CadPluginExtensions
     /// <summary>
     /// Добавить cad плагин.
     /// </summary>
-    /// <param name="cadPlugin">Cad плагин.</param>
+    /// <param name="cadPlugin"> Cad плагин. </param>
     public static void AddCadPlugin(this CadPlugin cadPlugin)
     {
         using (var sw = new StreamWriter(cadPlugin.PathToIniFile, true))
@@ -23,7 +23,7 @@ public static class CadPluginExtensions
     /// <summary>
     /// Удалить cad плагин.
     /// </summary>
-    /// <param name="cadPlugin">Cad плагин.</param>
+    /// <param name="cadPlugin"> Cad плагин. </param>
     public static void DeleteCadPlugin(this CadPlugin cadPlugin)
     {
         var allLines = File.ReadAllLines(cadPlugin.PathToIniFile);
@@ -34,7 +34,7 @@ public static class CadPluginExtensions
     /// <summary>
     /// Отключить cad плагин.
     /// </summary>
-    /// <param name="cadPlugin">Cad плагин.</param>
+    /// <param name="cadPlugin"> Cad плагин. </param>
     public static void DisableCadPlugin(this CadPlugin cadPlugin)
     {
         var allLines = File.ReadAllLines(cadPlugin.PathToIniFile);
@@ -48,7 +48,7 @@ public static class CadPluginExtensions
     /// <summary>
     /// Включить cad плагин.
     /// </summary>
-    /// <param name="cadPlugin">Cad плагин.</param>
+    /// <param name="cadPlugin"> Cad плагин. </param>
     public static void EnableCadPlugin(this CadPlugin cadPlugin)
     {
         var allLines = File.ReadAllLines(cadPlugin.PathToIniFile);

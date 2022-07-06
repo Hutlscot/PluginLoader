@@ -14,7 +14,7 @@ public static class CadIntegrationWorker
     /// <summary>
     /// Метод интеграции.
     /// </summary>
-    /// <param name="cadSystems">Список установленных кад систем.</param>
+    /// <param name="cadSystems"> Список установленных кад систем. </param>
     public static void Integration(List<CadSystem> cadSystems)
     {
         foreach (var cadSystem in cadSystems)

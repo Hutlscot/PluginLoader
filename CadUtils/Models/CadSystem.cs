@@ -1,6 +1,7 @@
 ﻿namespace CadUtils.Models;
 
 using System.Collections.Generic;
+
 using CadUtils.Utils;
 
 /// <summary>
@@ -8,6 +9,8 @@ using CadUtils.Utils;
 /// </summary>
 public class CadSystem
 {
+    private readonly string? _installPath;
+
     /// <summary>
     /// Инициализация класса кад-системы.
     /// </summary>
@@ -22,8 +25,6 @@ public class CadSystem
         _installPath = NcadUtils.GetNcadLocationValue(registerKey) ?? string.Empty;
     }
 
-    private readonly string? _installPath;
-
     /// <summary>
     /// Список кад плагинов.
     /// </summary>
@@ -35,11 +36,6 @@ public class CadSystem
     public string ExePath => $@"{_installPath}nCad.exe";
 
     /// <summary>
-    /// Путь до nCad.ini.
-    /// </summary>
-    public string NCadIniPath => $@"{_installPath}nCad.ini";
-
-    /// <summary>
     /// True - если кад установлен.
     /// </summary>
     public bool IsInstall => !string.IsNullOrEmpty(_installPath);
@@ -48,6 +44,11 @@ public class CadSystem
     /// Наименование системы.
     /// </summary>
     public string Name { get; }
+
+    /// <summary>
+    /// Путь до nCad.ini.
+    /// </summary>
+    public string NCadIniPath => $@"{_installPath}nCad.ini";
 
     /// <summary>
     /// Путь до ini файла c плагинами.

@@ -1,15 +1,14 @@
-﻿namespace CadUtils.View
-{
-    using System.Windows;
+﻿namespace CadUtils.View;
 
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class SettingsWindow : Window
+using System.Windows;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class SettingsWindow : Window
+{
+    public SettingsWindow()
     {
-        public SettingsWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

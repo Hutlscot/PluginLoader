@@ -14,7 +14,11 @@ public class DeletePluginCommand : TypedBaseCommand<CadPluginVM>
     protected override void Execute(CadPluginVM cadPluginVM)
     {
         var plugin = cadPluginVM.CadPlugin;
-        var dialogResult = MessageBox.Show($"Точно хотите удалить плагин {plugin.DisplayName}?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+        var dialogResult = MessageBox.Show(
+            $"Точно хотите удалить плагин {plugin.DisplayName}?",
+            "Внимание!",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Warning);
 
         if (dialogResult != MessageBoxResult.Yes)
             return;

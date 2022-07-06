@@ -16,6 +16,7 @@ public static class IniFileUtils
     /// Расширение для ini файлов.
     /// </summary>
     public const string INI_EXTENSIONS = ".ini";
+
     private const string LOAD_COMMAND_NAME = "[\\NetModules]";
 
     /// <summary>
@@ -63,6 +64,7 @@ public static class IniFileUtils
                 cadPlugins.Add(new CadPlugin(name, pathToDll, pathToIniFile));
             }
         }
+
         return cadPlugins;
     }
 }

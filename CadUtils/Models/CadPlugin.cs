@@ -10,7 +10,7 @@ public class CadPlugin
     /// </summary>
     /// <param name="name"> Имя плагина. </param>
     /// <param name="pathToDll"> Путь до dll плагина. </param>
-    /// <param name="pathToIniFile">Путь до ini файла.</param>
+    /// <param name="pathToIniFile"> Путь до ini файла. </param>
     public CadPlugin(string name, string pathToDll, string pathToIniFile)
     {
         var validName = name.Replace("#", "");
@@ -26,11 +26,6 @@ public class CadPlugin
     }
 
     /// <summary>
-    /// True - если плагин включён.
-    /// </summary>
-    public bool IsEnabled { get; set; }
-
-    /// <summary>
     /// Отображаемое имя.
     /// </summary>
     public string DisplayName { get; set; }
@@ -39,6 +34,11 @@ public class CadPlugin
     /// Отображаемый путь к dll.
     /// </summary>
     public string DisplayPathToDll { get; set; }
+
+    /// <summary>
+    /// True - если плагин включён.
+    /// </summary>
+    public bool IsEnabled { get; set; }
 
     /// <summary>
     /// Имя кад плагина.

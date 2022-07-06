@@ -29,18 +29,19 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock VerticalAlignment="Center" Width="200" Text="{Binding CadSystem.Name}"/>
+                                <TextBlock VerticalAlignment="Center" Width="200" Text="{Binding CadSystem.Name}" />
                                 <Button Width="30" Height="30"
                                         Command="{Binding CadRunCommand}" Foreground="#76ff03"
                                         CommandParameter="{Binding}"
-                                        Style="{StaticResource MaterialDesignIconForegroundButton}" 
+                                        Style="{StaticResource MaterialDesignIconForegroundButton}"
                                         Content="{materialDesign:PackIcon Kind=Play, Size=22}" Cursor="Hand" />
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1" Effect="{DynamicResource MaterialDesignShadowDepth5}" Height="40">
+                <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1"
+                                          Effect="{DynamicResource MaterialDesignShadowDepth5}" Height="40">
                     <TextBlock Margin="10" Text="Установленные кады на ПК" />
                 </materialDesign:ColorZone>
             </Grid>
@@ -48,20 +49,25 @@
 
 
         <materialDesign:DialogHost Grid.Column="1" Margin="15"
-            Style="{StaticResource MaterialDesignEmbeddedDialogHost}" DialogMargin="8">
+                                   Style="{StaticResource MaterialDesignEmbeddedDialogHost}" DialogMargin="8">
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Margin="16">
 
-                    <TextBlock HorizontalAlignment="Center" Style="{StaticResource MaterialDesignSubtitle1TextBlock}" Text="Добавить новый плагин" />
-                    <TextBox Margin="8" Text="{Binding SelectedCadVersionVM.AddedPluginVM.Name}" materialDesign:HintAssist.Hint="Имя плагина" Cursor="Arrow"/>
-                    <TextBox Margin="8" Text="{Binding SelectedCadVersionVM.AddedPluginVM.PathToDll}" materialDesign:HintAssist.Hint="Путь до .dll" Cursor="Arrow" />
+                    <TextBlock HorizontalAlignment="Center" Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                               Text="Добавить новый плагин" />
+                    <TextBox Margin="8" Text="{Binding SelectedCadVersionVM.AddedPluginVM.Name}"
+                             materialDesign:HintAssist.Hint="Имя плагина" Cursor="Arrow" />
+                    <TextBox Margin="8" Text="{Binding SelectedCadVersionVM.AddedPluginVM.PathToDll}"
+                             materialDesign:HintAssist.Hint="Путь до .dll" Cursor="Arrow" />
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button  Style="{StaticResource MaterialDesignRaisedAccentButton}" IsDefault="True" Margin="0 8 8 0" Content="ДОБАВИТЬ" 
-                                 Command="{Binding SelectedCadVersionVM.AddPluginCommand}"
-                                 CommandParameter="{Binding SelectedCadVersionVM}" Cursor="Hand">
-                        </Button>
-                        <Button Style="{StaticResource MaterialDesignOutlinedButton}" IsCancel="True" Margin="0 8 8 0" Content="ЗАКРЫТЬ" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Cursor="Hand">
+                        <Button Style="{StaticResource MaterialDesignRaisedAccentButton}" IsDefault="True"
+                                Margin="0 8 8 0" Content="ДОБАВИТЬ"
+                                Command="{Binding SelectedCadVersionVM.AddPluginCommand}"
+                                CommandParameter="{Binding SelectedCadVersionVM}" Cursor="Hand" />
+                        <Button Style="{StaticResource MaterialDesignOutlinedButton}" IsCancel="True" Margin="0 8 8 0"
+                                Content="ЗАКРЫТЬ" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                Cursor="Hand">
                             <Button.CommandParameter>
                                 <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                                     False
@@ -83,27 +89,31 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <ToggleButton Margin="0 0 5 0" Command="{Binding SwitchingPluginCommand}" CommandParameter="{Binding}"
-                                                  IsChecked="{Binding CadPlugin.IsEnabled}" Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"/>
-                                    <Button Margin="5 0 5 0" Style="{StaticResource MaterialDesignIconForegroundButton}" Width="30" Height="30" 
+                                    <ToggleButton Margin="0 0 5 0" Command="{Binding SwitchingPluginCommand}"
+                                                  CommandParameter="{Binding}"
+                                                  IsChecked="{Binding CadPlugin.IsEnabled}"
+                                                  Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" />
+                                    <Button Margin="5 0 5 0"
+                                            Style="{StaticResource MaterialDesignIconForegroundButton}" Width="30"
+                                            Height="30"
                                             Command="{Binding DeletePluginCommand}"
                                             CommandParameter="{Binding}"
                                             Content="{materialDesign:PackIcon Kind=Close, Size=22}"
-                                            Foreground="Red">
-                                    </Button>
+                                            Foreground="Red" />
                                     <Label Content="{Binding CadPlugin.DisplayName}" />
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                    <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1" Effect="{DynamicResource MaterialDesignShadowDepth5}" Height="40">
+                    <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1"
+                                              Effect="{DynamicResource MaterialDesignShadowDepth5}" Height="40">
                         <TextBlock Margin="10" Text="Список плагинов" />
                     </materialDesign:ColorZone>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
-                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
-                            VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="0" Margin="0 0 28 -20" 
+                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="0" Margin="0 0 28 -20"
                             Content="{materialDesign:PackIcon Kind=Plus, Size=22}" />
                 </Grid>
             </Border>
