@@ -1,6 +1,6 @@
 ﻿namespace CadUtils.Commands;
 
-using CadUtils.Utils;
+using CadUtils.Extensions;
 using CadUtils.VM;
 
 /// <summary>

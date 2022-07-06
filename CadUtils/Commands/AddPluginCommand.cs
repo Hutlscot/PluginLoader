@@ -2,8 +2,8 @@
 
 using System;
 
+using CadUtils.Extensions;
 using CadUtils.Models;
-using CadUtils.Utils;
 using CadUtils.VM;
 
 /// <summary>
