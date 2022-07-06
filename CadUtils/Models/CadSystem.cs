@@ -1,7 +1,6 @@
 ﻿namespace CadUtils.Models;
 
 using System.Collections.Generic;
-using System.IO;
 using CadUtils.Utils;
 
 /// <summary>
@@ -18,7 +17,7 @@ public class CadSystem
     {
         Name = name;
         PathToIniFile = PathsUtils.GetPathToIniFile(name);
-        CadPlugins = GetCadPlugins(PathToIniFile);
+        CadPlugins = IniFileUtils.GetPluginsFromIniFile(PathToIniFile);
 
         _installPath = NcadUtils.GetNcadLocationValue(registerKey) ?? string.Empty;
     }
@@ -54,28 +53,4 @@ public class CadSystem
     /// Путь до ini файла c плагинами.
     /// </summary>
     public string PathToIniFile { get; }
-
-    /// <summary>
-    /// Заполнить список кад плагинов.
-    /// </summary>
-    /// <param name="pathToIniFile"> Пусть до ini файла с плагинами. </param>
-    /// <returns> Список всех плагинов из ini файла. </returns>
-    private static List<CadPlugin> GetCadPlugins(string pathToIniFile)
-    {
-        var cadPlugins = new List<CadPlugin>();
-        using (var sr = new StreamReader(pathToIniFile))
-        {
-            while (true)
-            {
-                var name = sr.ReadLine();
-                var pathToDll = sr.ReadLine();
-
-                if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(pathToDll))
-                    break;
-
-                cadPlugins.Add(new CadPlugin(name, pathToDll, pathToIniFile));
-            }
-        }
-        return cadPlugins;
-    }
 }
