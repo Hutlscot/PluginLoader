@@ -29,7 +29,7 @@ public static class IniFileUtils
         // через using, чтобы файл сразу был доступен для работы
         using (var fs = File.Create(pathToIniFile))
         {
-            const string StartLine = $@"{LOAD_COMMAND_NAME}\n";
+            const string StartLine = $"{LOAD_COMMAND_NAME}\n";
             var buffer = Encoding.Default.GetBytes(StartLine);
             fs.Write(buffer);
         }
