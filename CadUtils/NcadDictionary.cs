@@ -25,6 +25,7 @@ public class NcadDictionary
             new(ApplicationKeys.KEY_NCAD_PLUS_11_0, CadVersions.NCAD_PLUS_11_0),
             new(ApplicationKeys.KEY_NCAD_PLUS_11_1, CadVersions.NCAD_PLUS_11_1),
             new(ApplicationKeys.KEY_NCAD_PLUS_20_0, CadVersions.NCAD_PLUS_20_0),
+            new(ApplicationKeys.KEY_NCAD_PLUS_EN_20_0, CadVersions.NCAD_PLUS_EN_20_0),
             new(ApplicationKeys.KEY_NCAD_PLUS_20_1, CadVersions.NCAD_PLUS_20_1),
             new(ApplicationKeys.KEY_NCAD_PLUS_21_0, CadVersions.NCAD_PLUS_21_0),
             new(ApplicationKeys.KEY_NCAD_21_0, CadVersions.NCAD_21_0),
