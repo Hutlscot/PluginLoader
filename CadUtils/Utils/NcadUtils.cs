@@ -17,7 +17,7 @@ public static class NcadUtils
     public static string? GetNcadLocationValue(string registerKey)
     {
         if (string.IsNullOrEmpty(registerKey))
-            throw new ArgumentException($"Неверно переданны параметры {registerKey}");
+            throw new ArgumentException($"Неверно переданы параметры {registerKey}");
 
         //Корневой ключ реестра.
         var view64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
