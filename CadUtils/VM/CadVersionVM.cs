@@ -18,6 +18,7 @@ public class CadVersionVM
     public CadVersionVM(CadSystem cadSystem)
     {
         CadRunCommand = new CadRunCommand();
+        CadCloseCommand = new CadCloseCommand();
         AddPluginCommand = new AddPluginCommand();
         CadPluginVMs = new ObservableCollection<CadPluginVM>();
         AddedPluginVM = new AddedPluginVM(cadSystem.PathToIniFile);
@@ -43,6 +44,11 @@ public class CadVersionVM
     /// Команда запуска када.
     /// </summary>
     public CadRunCommand CadRunCommand { get; set; }
+
+    /// <summary>
+    /// Команда остановки када.
+    /// </summary>
+    public CadCloseCommand CadCloseCommand { get; set; }
 
     /// <summary>
     /// Класс кад системы

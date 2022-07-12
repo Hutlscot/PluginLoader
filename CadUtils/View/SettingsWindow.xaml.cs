@@ -11,4 +11,9 @@ public partial class SettingsWindow : Window
     {
         InitializeComponent();
     }
+
+    private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+    {
+
+    }
 }
