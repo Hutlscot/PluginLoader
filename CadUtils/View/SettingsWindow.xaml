@@ -35,6 +35,11 @@
                                         CommandParameter="{Binding}"
                                         Style="{StaticResource MaterialDesignIconForegroundButton}"
                                         Content="{materialDesign:PackIcon Kind=Play, Size=22}" Cursor="Hand" />
+                                <Button Width="30" Height="30"
+                                        Command="{Binding CadCloseCommand}" Foreground="Tomato"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                        Content="{materialDesign:PackIcon Kind=Stop, Size=22}" Cursor="Hand" />
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
