@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Commands\CloseVmCad.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Autocad.ico" />
   </ItemGroup>
 
